@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="110dp"
+    android:height="110dp"
+    android:viewportWidth="110"
+    android:viewportHeight="110">
+
+    <!-- Rounded square background with top-left light to bottom-right dark gradient -->
+    <path
+        android:pathData="M22,0 L88,0 Q110,0 110,22 L110,88 Q110,110 88,110 L22,110 Q0,110 0,88 L0,22 Q0,0 22,0 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startX="0"
+                android:startY="0"
+                android:endX="110"
+                android:endY="110">
+                <item android:offset="0.0" android:color="#3D5A8A"/>
+                <item android:offset="1.0" android:color="#1A2748"/>
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Outer teal ring -->
+    <path
+        android:pathData="M55,12 A43,43 0 1,1 54.9,12 Z"
+        android:fillColor="#00000000"
+        android:strokeColor="#2DD6B0"
+        android:strokeWidth="3.5"/>
+
+    <!-- Inner teal ring -->
+    <path
+        android:pathData="M55,28 A27,27 0 1,1 54.9,28 Z"
+        android:fillColor="#00000000"
+        android:strokeColor="#2DD6B0"
+        android:strokeWidth="3.5"/>
+
+    <!-- Teal checkmark -->
+    <path
+        android:pathData="M42,55 L50,65 L68,43"
+        android:fillColor="#00000000"
+        android:strokeColor="#2DD6B0"
+        android:strokeWidth="4.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"/>
+
+</vector>

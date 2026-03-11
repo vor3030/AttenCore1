@@ -1,3 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AttenCore</string>
+    <string name="app_description">Smart Attendance Made Easy</string>
+
+    <!-- Home Page -->
+    <string name="home_page">HOME PAGE</string>
+    <string name="app_title_part1">Atten</string>
+    <string name="app_title_part2">Core</string>
+    <string name="app_tagline">Smart Attendance Made Easy</string>
+    <string name="get_started">Get Started</string>
+
+    <!-- Common Actions -->
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="back">Back</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="submit">Submit</string>
+    <string name="logout">Logout</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+
+    <!-- Validation Messages -->
+    <string name="error_empty_field">This field cannot be empty</string>
+    <string name="error_invalid_email">Please enter a valid email address</string>
+    <string name="error_password_mismatch">Passwords do not match</string>
+    <string name="error_short_password">Password must be at least 6 characters</string>
+    <string name="error_network">Network error. Please check your connection.</string>
+    <string name="error_unknown">An unknown error occurred</string>
+
+    <!-- Success Messages -->
+    <string name="success_saved">Saved successfully</string>
+    <string name="success_deleted">Deleted successfully</string>
+    <string name="success_updated">Updated successfully</string>
+
+    <!-- Attendance Related -->
+    <string name="mark_attendance">Mark Attendance</string>
+    <string name="view_attendance">View Attendance</string>
+    <string name="attendance_records">Attendance Records</string>
+    <string name="present">Present</string>
+    <string name="absent">Absent</string>
+    <string name="leave">Leave</string>
+    <string name="attendance_date">Date</string>
+    <string name="attendance_status">Status</string>
+
+    <!-- User Related -->
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="profile">Profile</string>
+    <string name="settings">Settings</string>
+
+    <!-- Content Descriptions -->
+    <string name="app_icon_description">App Icon - Checkmark Circle</string>
+    <string name="button_get_started_description">Button to get started with the app</string>
+
+    <!-- Loading and Progress -->
+    <string name="loading">Loading…</string>
+    <string name="please_wait">Please wait</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="sign_in_to_continue">Sign in to continue</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="or">or</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+
 </resources>
