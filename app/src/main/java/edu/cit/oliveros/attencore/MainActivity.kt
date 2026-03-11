@@ -1,20 +1,38 @@
 package edu.cit.oliveros.attencore
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.view.animation.AnimationUtils
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.appcompat.widget.AppCompatButton
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        // Set the layout to your home screen XML
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        // Find the app icon and apply bounce animation
+        val appIcon = findViewById<ImageView>(R.id.appIcon)
+        val bounceAnimation = AnimationUtils.loadAnimation(this, R.anim.bounce_animation)
+        appIcon.startAnimation(bounceAnimation)
+
+        // Find the Get Started button
+        val getStartedButton = findViewById<AppCompatButton>(R.id.getStartedButton)
+
+        // Set click listener for Get Started button
+        getStartedButton.setOnClickListener {
+            // Navigate to Login screen
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
         }
     }
 }
+
+
+
+
+
+
