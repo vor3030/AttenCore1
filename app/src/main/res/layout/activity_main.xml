@@ -5,10 +5,11 @@
     android:orientation="vertical"
     android:background="@drawable/gradient_background">
 
-    <!-- Centered Content -->
+    <!-- Centered Content (Logo, Title, Tagline) -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="vertical"
         android:gravity="center"
         android:paddingLeft="30dp"
@@ -20,7 +21,7 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:src="@drawable/atten_core"
-            android:layout_marginBottom="2dp"
+            android:layout_marginBottom="20dp"
             android:contentDescription="@string/app_icon_description" />
 
         <!-- App Title -->
@@ -60,22 +61,25 @@
             android:text="@string/app_tagline"
             android:textColor="#B0C4DE"
             android:textSize="16sp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="@font/roboto_regular" />
 
-        <!-- Get Started Button -->
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/getStartedButton"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:text="@string/get_started"
-            android:textColor="#1a5f6f"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:background="@drawable/button_background"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/roboto_bold"
-            android:stateListAnimator="@null" />
-
     </LinearLayout>
+
+    <!-- Get Started Button (Bottom) -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/getStartedButton"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="31dp"
+        android:layout_marginBottom="30dp"
+        android:text="@string/get_started"
+        android:textColor="#1a5f6f"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/roboto_bold"
+        android:stateListAnimator="@null" />
+
 </LinearLayout>
