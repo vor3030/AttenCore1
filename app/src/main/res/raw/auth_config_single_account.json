@@ -1,0 +1,13 @@
+{
+  "client_id": "YOUR_MICROSOFT_CLIENT_ID",
+  "redirect_uri": "msauth://YOUR_PACKAGE_NAME/SIGNATURE_HASH",
+  "authorities": [
+    {
+      "type": "AAD",
+      "audience": {
+        "type": "AzureADMyOrg",
+        "tenant_id": "common"
+      }
+    }
+  ]
+}

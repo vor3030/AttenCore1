@@ -91,193 +91,193 @@
     </LinearLayout>
 
     <!-- White Content Card - Scrollable -->
+
+    <!-- Bottom Register Section -->
     <LinearLayout
         android:id="@+id/contentCard"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        android:background="@drawable/content_card_background"
-        android:padding="24dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginTop="-60dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/content_card_background"
+        android:orientation="vertical"
+        android:padding="24dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/headerSection">
 
-            <!-- Email Section -->
+        <!-- Email Section -->
+        <TextView
+            android:id="@+id/emailLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/email"
+            android:textColor="#333333"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/emailInput"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="5dp"
+            android:autofillHints=""
+            android:background="@drawable/input_field_background"
+            android:drawableStart="@drawable/ic_email"
+            android:drawablePadding="12dp"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="@string/enter_email"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textColor="#333333"
+            android:textColorHint="#999999"
+            android:textSize="14sp" />
+
+        <!-- Password Section -->
+        <TextView
+            android:id="@+id/passwordLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/password"
+            android:textColor="#333333"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/passwordInput"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="6dp"
+            android:autofillHints=""
+            android:background="@drawable/input_field_background"
+            android:drawableStart="@drawable/ic_lock"
+            android:drawablePadding="12dp"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="@string/enter_password"
+            android:inputType="textPassword"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textColor="#333333"
+            android:textColorHint="#999999"
+            android:textSize="14sp" />
+
+        <!-- Forgot Password -->
+        <TextView
+            android:id="@+id/forgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/forgot_password"
+            android:textColor="#4ECDC4"
+            android:textSize="12sp" />
+
+        <!-- Login Button -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/loginButton"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginBottom="1dp"
+            android:background="@drawable/login_button_background"
+            android:fontFamily="@font/roboto_bold"
+            android:stateListAnimator="@null"
+            android:text="@string/login"
+            android:textColor="#4ECDC4"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Divider with OR -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="1"
+                android:background="#4ECDC4" />
+
             <TextView
-                android:id="@+id/emailLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/email"
-                android:textColor="#333333"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/roboto_bold" />
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/or"
+                android:textColor="#999999"
+                android:textSize="12sp" />
 
-            <EditText
-                android:id="@+id/emailInput"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:autofillHints=""
-                android:background="@drawable/input_field_background"
-                android:hint="@string/enter_email"
-                android:textColorHint="#999999"
-                android:textColor="#333333"
-                android:textSize="14sp"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:inputType="textEmailAddress"
-                android:drawableStart="@drawable/ic_email"
-                android:drawablePadding="12dp"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/roboto_regular" />
-
-            <!-- Password Section -->
-            <TextView
-                android:id="@+id/passwordLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/password"
-                android:textColor="#333333"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/roboto_bold" />
-
-            <EditText
-                android:id="@+id/passwordInput"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:autofillHints=""
-                android:background="@drawable/input_field_background"
-                android:hint="@string/enter_password"
-                android:textColorHint="#999999"
-                android:textColor="#333333"
-                android:textSize="14sp"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:inputType="textPassword"
-                android:drawableStart="@drawable/ic_lock"
-                android:drawablePadding="12dp"
-                android:layout_marginBottom="6dp"
-                android:fontFamily="@font/roboto_regular" />
-
-            <!-- Forgot Password -->
-            <TextView
-                android:id="@+id/forgotPassword"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/forgot_password"
-                android:textColor="#4ECDC4"
-                android:textSize="12sp"
-                android:layout_gravity="end"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/roboto_regular" />
-
-            <!-- Login Button -->
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/loginButton"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:text="@string/login"
-                android:textColor="#4ECDC4"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:background="@drawable/login_button_background"
-                android:layout_marginBottom="1dp"
-                android:fontFamily="@font/roboto_bold"
-                android:stateListAnimator="@null" />
-
-            <!-- Divider with OR -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="12dp"
-                android:layout_marginTop="5dp">
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="2dp"
-                    android:layout_weight="1"
-                    android:background="#4ECDC4" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/or"
-                    android:textColor="#999999"
-                    android:textSize="12sp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="12dp"
-                    android:fontFamily="@font/roboto_regular" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="2dp"
-                    android:layout_weight="1"
-                    android:background="#4ECDC4" />
-            </LinearLayout>
-
-            <!-- Social Login Buttons -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_marginBottom="200dp">
-
-                <!-- Facebook -->
-                <ImageButton
-                    android:id="@+id/facebookButton"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:src="@drawable/ic_facebook"
-                    android:background="@drawable/social_button_background"
-                    android:scaleType="centerInside"
-                    android:layout_marginEnd="10dp"
-                    android:contentDescription="@string/login" />
-
-                <!-- Microsoft -->
-                <ImageButton
-                    android:id="@+id/microsoftButton"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:src="@drawable/ic_microsoft"
-                    android:background="@drawable/social_button_background"
-                    android:scaleType="centerInside"
-                    android:layout_marginEnd="10dp"
-                    android:contentDescription="@string/login" />
-
-                <!-- Google -->
-                <ImageButton
-                    android:id="@+id/googleButton"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="@drawable/social_button_background"
-                    android:contentDescription="@string/login"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/ic_google" />
-
-                <!-- Apple -->
-                <ImageButton
-                    android:id="@+id/appleButton"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:src="@drawable/ic_apple"
-                    android:background="@drawable/social_button_background"
-                    android:scaleType="centerInside"
-                    android:contentDescription="@string/login" />
-            </LinearLayout>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_weight="1"
+                android:background="#4ECDC4" />
         </LinearLayout>
 
-    <!-- Bottom Register Section -->
+        <!-- Social Login Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="200dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <!-- Facebook -->
+            <ImageButton
+                android:id="@+id/facebookButton"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/social_button_background"
+                android:contentDescription="@string/login"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_facebook" />
+
+            <!-- Microsoft -->
+            <ImageButton
+                android:id="@+id/microsoftButton"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/social_button_background"
+                android:contentDescription="@string/login"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_microsoft" />
+
+            <!-- Google -->
+            <ImageButton
+                android:id="@+id/googleButton"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/social_button_background"
+                android:contentDescription="@string/login"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_google" />
+
+            <!-- Apple -->
+            <ImageButton
+                android:id="@+id/appleButton"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/social_button_background"
+                android:contentDescription="@string/login"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_apple" />
+        </LinearLayout>
+    </LinearLayout>
+
     <LinearLayout
         android:id="@+id/registerSection"
         android:layout_width="match_parent"
