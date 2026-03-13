@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "715347550819",
+    "project_id": "attencore-f6738",
+    "storage_bucket": "attencore-f6738.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:715347550819:android:e736b7326837abf2634e56",
+        "android_client_info": {
+          "package_name": "edu.cit.oliveros.attencore"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSBfJDkCY2jsS52dBrlXjNjsFhx9-hNdQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

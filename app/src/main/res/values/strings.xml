@@ -72,13 +72,11 @@
 
 
     <!-- Google Sign-In -->
-    <string name="google_web_client_id">471002338081-f720eokvp1kmc1u7i94coaj1fv7l0o7q.apps.googleusercontent.com</string>
+    <string name="google_web_client_id">123456789-abc123def456ghi789.apps.googleusercontent.com</string>
 
     <!-- Facebook -->
-    <string name="facebook_app_id">YOUR_FACEBOOK_APP_ID</string>
-    <string name="fb_login_protocol_scheme">fb1234</string>
-    <string name="facebook_client_token">56789</string>
-
-
+    <string name="facebook_app_id">2734240410266767</string>
+    <string name="facebook_client_token">15fb6f626be1a35a5d6ece20c7018e26</string>
+    <string name="fb_login_protocol_scheme">fb2734240410266767</string>
 
 </resources>

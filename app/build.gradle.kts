@@ -3,7 +3,8 @@
 
 plugins {
     id("com.android.application")
-    // id("com.google.gms.google-services") // Removed because google-services.json is missing
+    id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -35,13 +36,13 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+
     buildFeatures {
         compose = false
     }
-}
-
-kotlin {
-    jvmToolchain(11)
 }
 
 dependencies {
@@ -56,26 +57,29 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     // ============= FACEBOOK SDK =============
-    implementation("com.facebook.android:facebook-android-sdk:latest.release")
+    implementation("com.facebook.android:facebook-android-sdk:18.1.3")
 
     // ============= GOOGLE SIGN-IN =============
     implementation("com.google.android.gms:play-services-auth:21.5.1")
     implementation("com.google.android.gms:play-services-base:18.10.0")
 
     // ============= MICROSOFT MSAL =============
-    implementation("com.microsoft.identity.client:msal:8.2.3") {
+    implementation("com.microsoft.identity.client:msal:2.+") {
         exclude("com.microsoft.device.display", "display-mask")
     }
+
+
 
     // ============= FIREBASE (Apple Sign-In) =============
     implementation(platform("com.google.firebase:firebase-bom:34.10.0"))
     implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-analytics")
 
     // ============= RETROFIT & HTTP =============
-    implementation("com.squareup.retrofit2:retrofit:3.0.0")
-    implementation("com.squareup.retrofit2:converter-gson:3.0.0")
-    implementation("com.squareup.okhttp3:okhttp:5.3.2")
-    implementation("com.squareup.okhttp3:logging-interceptor:5.3.2")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:okhttp:4.11.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
 
     // ============= SECURITY =============
     implementation("androidx.security:security-crypto:1.1.0")

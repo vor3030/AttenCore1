@@ -2,15 +2,17 @@
 // Location: YourProject/build.gradle.kts (at ROOT, not in app folder)
 
 plugins {
-    id("com.android.application") version "9.0.1" apply false
-    id("org.jetbrains.kotlin.android") version "2.3.10" apply false
+    id("com.android.application") version "8.13.2" apply false
+    id("org.jetbrains.kotlin.android") version "2.1.0" apply false
+    id("com.google.gms.google-services") version "4.4.4" apply false
 }
 
- buildscript {
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
     dependencies {
-         classpath("com.google.gms:google-services:4.4.4")
-     }
-     repositories {
-         mavenCentral()
-     }
- }
+        classpath("com.google.gms:google-services:4.4.4")
+    }
+}
