@@ -36,6 +36,10 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+
     buildFeatures {
         compose = false
     }
@@ -53,32 +57,27 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     // ============= FACEBOOK SDK =============
-    implementation("com.facebook.android:facebook-android-sdk:18.2.3")
+    implementation(libs.facebook.android.sdk)
 
     // ============= GOOGLE SIGN-IN (Credential Manager) =============
-    implementation("androidx.credentials:credentials:1.5.0")
-    implementation("androidx.credentials:credentials-play-services-auth:1.5.0")
-    implementation("com.google.android.libraries.identity.googleid:googleid:1.2.0")
-
-    // Legacy Google Sign-In (Remove after full migration if not needed)
-    // implementation("com.google.android.gms:play-services-auth:21.5.1")
+    implementation(libs.androidx.credentials.core)
+    implementation(libs.androidx.credentials.play.auth)
+    implementation(libs.googleid)
 
     // ============= MICROSOFT MSAL =============
-    implementation("com.microsoft.identity.client:msal:2.+") {
-        exclude("com.microsoft.device.display", "display-mask")
-    }
+    implementation(libs.msal)
 
     // ============= FIREBASE (Apple Sign-In) =============
-    implementation(platform("com.google.firebase:firebase-bom:34.11.0"))
-    implementation("com.google.firebase:firebase-auth")
-    implementation("com.google.firebase:firebase-analytics")
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.analytics)
 
     // ============= RETROFIT & HTTP =============
-    implementation("com.squareup.retrofit2:retrofit:3.0.0")
-    implementation("com.squareup.retrofit2:converter-gson:3.0.0")
-    implementation("com.squareup.okhttp3:okhttp:5.3.2")
-    implementation("com.squareup.okhttp3:logging-interceptor:5.3.2")
+    implementation(libs.retrofit.lib)
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.okhttp.lib)
+    implementation(libs.okhttp.logging.interceptor)
 
     // ============= SECURITY =============
-    implementation("androidx.security:security-crypto:1.1.0")
+    implementation(libs.androidx.security.crypto)
 }

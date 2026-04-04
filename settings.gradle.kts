@@ -20,9 +20,9 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven {
-            maven {
-                url = uri("https://pkgs.dev.azure.com/MicrosoftDeviceSDK/DuoSDK-Public/_packaging/Duo-SDK-Feed/maven/v1")
-            }
+            url = uri("https://pkgs.dev.azure.com/MicrosoftDeviceSDK/DuoSDK-Public/_packaging/Duo-SDK-Feed/maven/v1")
+        }
+        maven {
             url = uri("https://pkgs.dev.azure.com/MicrosoftDeviceSDK/7e625948-4386-429e-975b-1c79f4f4ae34/_packaging/DualScreen-SDKs/maven/v1")
             content {
                 includeGroup("com.microsoft.device.display")
