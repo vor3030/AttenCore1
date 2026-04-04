@@ -238,43 +238,21 @@
                 android:id="@+id/facebookButton"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="20dp"
                 android:background="@drawable/social_button_background"
                 android:contentDescription="@string/login"
                 android:scaleType="centerInside"
                 android:src="@drawable/ic_facebook" />
-
-            <!-- Microsoft -->
-            <ImageButton
-                android:id="@+id/microsoftButton"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/social_button_background"
-                android:contentDescription="@string/login"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_microsoft" />
 
             <!-- Google -->
             <ImageButton
                 android:id="@+id/googleButton"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
-                android:layout_marginEnd="10dp"
                 android:background="@drawable/social_button_background"
                 android:contentDescription="@string/login"
                 android:scaleType="centerInside"
                 android:src="@drawable/ic_google" />
-
-            <!-- Apple -->
-            <ImageButton
-                android:id="@+id/appleButton"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:background="@drawable/social_button_background"
-                android:contentDescription="@string/login"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_apple" />
         </LinearLayout>
     </LinearLayout>
 

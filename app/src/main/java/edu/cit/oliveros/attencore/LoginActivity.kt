@@ -23,13 +23,6 @@ import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.google.android.libraries.identity.googleid.GoogleIdTokenParsingException
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.OAuthProvider
-import com.microsoft.identity.client.AuthenticationCallback
-import com.microsoft.identity.client.IAuthenticationResult
-import com.microsoft.identity.client.IPublicClientApplication
-import com.microsoft.identity.client.ISingleAccountPublicClientApplication
-import com.microsoft.identity.client.PublicClientApplication
-import com.microsoft.identity.client.exception.MsalException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -39,10 +32,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var tokenManager: SocialAuthTokenManager
     private lateinit var callbackManager: CallbackManager
     
-    // Microsoft MSAL
-    private var mAccount: ISingleAccountPublicClientApplication? = null
-    
-    // Apple (Firebase)
+    // Firebase (for user management if needed)
     private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +43,6 @@ class LoginActivity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
 
         setupFacebookLogin()
-        setupMicrosoftMSAL()
 
         val emailInput = findViewById<EditText>(R.id.emailInput)
         val passwordInput = findViewById<EditText>(R.id.passwordInput)
@@ -62,8 +51,6 @@ class LoginActivity : AppCompatActivity() {
         
         val googleButton = findViewById<ImageButton>(R.id.googleButton)
         val facebookButton = findViewById<ImageButton>(R.id.facebookButton)
-        val microsoftButton = findViewById<ImageButton>(R.id.microsoftButton)
-        val appleButton = findViewById<ImageButton>(R.id.appleButton)
 
         loginButton.setOnClickListener {
             val email = emailInput.text.toString().trim()
@@ -81,14 +68,6 @@ class LoginActivity : AppCompatActivity() {
 
         facebookButton.setOnClickListener {
             LoginManager.getInstance().logInWithReadPermissions(this, listOf("email", "public_profile"))
-        }
-
-        microsoftButton.setOnClickListener {
-            signInWithMicrosoft()
-        }
-
-        appleButton.setOnClickListener {
-            signInWithApple()
         }
 
         registerLink.setOnClickListener {
@@ -146,49 +125,6 @@ class LoginActivity : AppCompatActivity() {
             override fun onCancel() {}
             override fun onError(error: FacebookException) {}
         })
-    }
-
-    private fun setupMicrosoftMSAL() {
-        PublicClientApplication.createSingleAccountPublicClientApplication(
-            this,
-            R.raw.auth_config_single_account,
-            object : IPublicClientApplication.ISingleAccountApplicationCreatedListener {
-                override fun onCreated(application: ISingleAccountPublicClientApplication) {
-                    mAccount = application
-                }
-                override fun onError(exception: MsalException) {
-                    Log.e("MSAL", "Error creating MSAL application", exception)
-                }
-            })
-    }
-
-    private fun signInWithMicrosoft() {
-        mAccount?.signIn(this, null, arrayOf("user.read"), object : AuthenticationCallback {
-            override fun onSuccess(authenticationResult: IAuthenticationResult) {
-                val token = authenticationResult.accessToken
-                val email = authenticationResult.account.username
-                handleSuccessfulLogin(email, "microsoft", token)
-            }
-            override fun onError(exception: MsalException) {
-                Log.e("MSAL", "Authentication failed", exception)
-            }
-            override fun onCancel() {}
-        })
-    }
-
-    private fun signInWithApple() {
-        val provider = OAuthProvider.newBuilder("apple.com")
-        provider.scopes = listOf("email", "name")
-        
-        firebaseAuth.startActivityForSignInWithProvider(this, provider.build())
-            .addOnSuccessListener { authResult ->
-                val user = authResult.user
-                handleSuccessfulLogin(user?.email ?: "", "apple", "firebase_token")
-            }
-            .addOnFailureListener { e ->
-                Log.e("AppleAuth", "Apple sign in failed", e)
-                Toast.makeText(this, "Apple Sign-In failed: ${e.message}", Toast.LENGTH_SHORT).show()
-            }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

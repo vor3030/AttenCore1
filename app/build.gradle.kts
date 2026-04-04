@@ -64,10 +64,7 @@ dependencies {
     implementation(libs.androidx.credentials.play.auth)
     implementation(libs.googleid)
 
-    // ============= MICROSOFT MSAL =============
-    implementation(libs.msal)
-
-    // ============= FIREBASE (Apple Sign-In) =============
+    // ============= FIREBASE =============
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth)
     implementation(libs.firebase.analytics)

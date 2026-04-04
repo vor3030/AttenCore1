@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 
@@ -31,11 +30,9 @@ class MainActivity : AppCompatActivity() {
 
         // If session is valid, we could redirect to a Home screen or update UI
         if (tokenManager.isSessionValid()) {
-            // For now, let's just show a welcome message or handle it as "Logged In" state
-            // Example: update a text view if it exists, or auto-navigate
-            // val intent = Intent(this, HomeActivity::class.java)
-            // startActivity(intent)
-            // finish()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
         // Find the app icon and apply bounce animation
