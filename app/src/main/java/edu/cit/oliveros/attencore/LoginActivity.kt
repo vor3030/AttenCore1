@@ -5,32 +5,38 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
+import androidx.credentials.CredentialManager
+import androidx.credentials.GetCredentialRequest
+import androidx.credentials.GetCredentialResponse
+import androidx.credentials.CustomCredential
+import androidx.credentials.exceptions.GetCredentialException
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
-import com.microsoft.identity.client.*
-import com.microsoft.identity.client.exception.MsalException
+import com.google.android.libraries.identity.googleid.GetGoogleIdOption
+import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
+import com.google.android.libraries.identity.googleid.GoogleIdTokenParsingException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.OAuthProvider
+import com.microsoft.identity.client.AuthenticationCallback
+import com.microsoft.identity.client.IAuthenticationResult
+import com.microsoft.identity.client.IPublicClientApplication
+import com.microsoft.identity.client.ISingleAccountPublicClientApplication
+import com.microsoft.identity.client.PublicClientApplication
+import com.microsoft.identity.client.exception.MsalException
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var tokenManager: SocialAuthTokenManager
-    private lateinit var googleSignInClient: GoogleSignInClient
-    private lateinit var googleSignInLauncher: ActivityResultLauncher<Intent>
     private lateinit var callbackManager: CallbackManager
     
     // Microsoft MSAL
@@ -46,13 +52,13 @@ class LoginActivity : AppCompatActivity() {
         tokenManager = SocialAuthTokenManager(this)
         firebaseAuth = FirebaseAuth.getInstance()
 
-        setupGoogleSignIn()
         setupFacebookLogin()
         setupMicrosoftMSAL()
 
         val emailInput = findViewById<EditText>(R.id.emailInput)
         val passwordInput = findViewById<EditText>(R.id.passwordInput)
         val loginButton = findViewById<AppCompatButton>(R.id.loginButton)
+        val registerLink = findViewById<TextView>(R.id.registerLink)
         
         val googleButton = findViewById<ImageButton>(R.id.googleButton)
         val facebookButton = findViewById<ImageButton>(R.id.facebookButton)
@@ -61,11 +67,16 @@ class LoginActivity : AppCompatActivity() {
 
         loginButton.setOnClickListener {
             val email = emailInput.text.toString().trim()
+            val password = passwordInput.text.toString().trim()
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             handleSuccessfulLogin(email, "custom", "mock_jwt_token")
         }
 
         googleButton.setOnClickListener {
-            googleSignInLauncher.launch(googleSignInClient.signInIntent)
+            signInWithGoogle()
         }
 
         facebookButton.setOnClickListener {
@@ -79,27 +90,50 @@ class LoginActivity : AppCompatActivity() {
         appleButton.setOnClickListener {
             signInWithApple()
         }
+
+        registerLink.setOnClickListener {
+            // Navigate to RegisterActivity
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
     }
 
-    private fun setupGoogleSignIn() {
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestEmail()
-            .requestIdToken(getString(R.string.google_web_client_id))
+    private fun signInWithGoogle() {
+        val credentialManager = CredentialManager.create(this)
+
+        val googleIdOption: GetGoogleIdOption = GetGoogleIdOption.Builder()
+            .setFilterByAuthorizedAccounts(false)
+            .setServerClientId(getString(R.string.google_web_client_id))
+            .setAutoSelectEnabled(true)
             .build()
-        googleSignInClient = GoogleSignIn.getClient(this, gso)
-        googleSignInLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == RESULT_OK) {
-                handleGoogleSignInResult(GoogleSignIn.getSignedInAccountFromIntent(result.data))
+
+        val request: GetCredentialRequest = GetCredentialRequest.Builder()
+            .addCredentialOption(googleIdOption)
+            .build()
+
+        CoroutineScope(Dispatchers.Main).launch {
+            try {
+                val result = credentialManager.getCredential(
+                    request = request,
+                    context = this@LoginActivity,
+                )
+                handleGoogleSignInResult(result)
+            } catch (e: GetCredentialException) {
+                Log.e("LoginActivity", "Google sign in failed", e)
+                Toast.makeText(this@LoginActivity, "Google Sign-In failed", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    private fun handleGoogleSignInResult(completedTask: Task<GoogleSignInAccount>) {
-        try {
-            val account = completedTask.getResult(ApiException::class.java)
-            handleSuccessfulLogin(account?.email ?: "", "google", account?.idToken ?: "")
-        } catch (e: ApiException) {
-            Log.e("LoginActivity", "Google sign in failed", e)
+    private fun handleGoogleSignInResult(result: GetCredentialResponse) {
+        val credential = result.credential
+        if (credential is CustomCredential && credential.type == GoogleIdTokenCredential.TYPE_GOOGLE_ID_TOKEN_CREDENTIAL) {
+            try {
+                val googleIdTokenCredential = GoogleIdTokenCredential.createFrom(credential.data)
+                handleSuccessfulLogin(googleIdTokenCredential.id, "google", googleIdTokenCredential.idToken)
+            } catch (e: GoogleIdTokenParsingException) {
+                Log.e("LoginActivity", "Received an invalid google id token response", e)
+            }
         }
     }
 

@@ -22,6 +22,7 @@
     <string name="submit">Submit</string>
     <string name="logout">Logout</string>
     <string name="login">Login</string>
+    <string name="log_in">Log in</string>
     <string name="register">Register</string>
 
     <!-- Validation Messages -->
@@ -31,6 +32,8 @@
     <string name="error_short_password">Password must be at least 6 characters</string>
     <string name="error_network">Network error. Please check your connection.</string>
     <string name="error_unknown">An unknown error occurred</string>
+    <string name="email_required">Email is required</string>
+    <string name="password_required">Password is required</string>
 
     <!-- Success Messages -->
     <string name="success_saved">Saved successfully</string>
@@ -78,5 +81,16 @@
     <string name="facebook_app_id">2734240410266767</string>
     <string name="facebook_client_token">15fb6f626be1a35a5d6ece20c7018e26</string>
     <string name="fb_login_protocol_scheme">fb2734240410266767</string>
+
+    <!-- Register Activity Strings -->
+    <string name="create_new_account">Join AttenCore Today</string>
+    <string name="name">Name</string>
+    <string name="full_name_hint">Full Name</string>
+    <string name="student_faculty_id">Student/Faculty ID</string>
+    <string name="enter_id_hint">Enter ID</string>
+    <string name="i_am_a">I am a:</string>
+    <string name="student">STUDENT</string>
+    <string name="faculty">FACULTY</string>
+    <string name="already_have_account">Already have an account?</string>
 
 </resources>

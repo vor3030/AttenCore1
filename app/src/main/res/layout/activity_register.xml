@@ -1,6 +1,250 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#1a2a2f"
+    android:paddingBottom="0dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Header with Gradient Background -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/register_header_background"
+        android:paddingTop="24dp"
+        android:paddingBottom="24dp">
+
+        <!-- App Icon -->
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/atten_core"
+            android:contentDescription="@string/app_name"
+            android:layout_marginBottom="12dp" />
+
+        <!-- App Name -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Tagline -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/create_new_account"
+            android:textSize="16sp"
+            android:textColor="#4ECDC4"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+    <!-- Scrollable Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#1a2a2f">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Full Name Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/fullNameInput"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:inputType="textPersonName"
+                android:hint="@string/full_name_hint"
+                android:autofillHints="name"
+                android:padding="12dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/register_input_background"
+                android:textColor="@color/white"
+                android:textColorHint="#888888"
+                android:drawableStart="@drawable/ic_person"
+                android:drawablePadding="12dp" />
+
+            <!-- Student/Faculty ID Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/student_faculty_id"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/studentIdInput"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:inputType="text"
+                android:hint="@string/enter_id_hint"
+                android:autofillHints="username"
+                android:padding="12dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/register_input_background"
+                android:textColor="@color/white"
+                android:textColorHint="#888888"
+                android:drawableStart="@drawable/ic_id"
+                android:drawablePadding="12dp" />
+
+            <!-- Email Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/email"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/registerEmailInput"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:inputType="textEmailAddress"
+                android:hint="@string/enter_email"
+                android:autofillHints="emailAddress"
+                android:padding="12dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/register_input_background"
+                android:textColor="@color/white"
+                android:textColorHint="#888888"
+                android:drawableStart="@drawable/ic_email"
+                android:drawablePadding="12dp" />
+
+            <!-- Password Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/password"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/registerPasswordInput"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:inputType="textPassword"
+                android:hint="@string/enter_password"
+                android:autofillHints="password"
+                android:padding="12dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/register_input_background"
+                android:textColor="@color/white"
+                android:textColorHint="#888888"
+                android:drawableStart="@drawable/ic_lock"
+                android:drawablePadding="12dp" />
+
+            <!-- User Type Selection -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/i_am_a"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="24dp">
+
+                <!-- Student Button -->
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/studentButton"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:text="@string/student"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/button_toggle_selected"
+                    android:drawableTop="@drawable/ic_student"
+                    android:paddingTop="8dp" />
+
+                <View
+                    android:layout_width="12dp"
+                    android:layout_height="0dp" />
+
+                <!-- Faculty Button -->
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/facultyButton"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:text="@string/faculty"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/button_toggle_unselected"
+                    android:drawableTop="@drawable/ic_faculty"
+                    android:paddingTop="8dp" />
+            </LinearLayout>
+
+            <!-- Register Button -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/registerButton"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/register"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:background="@drawable/login_button_background"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Login Link -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/already_have_account"
+                    android:textSize="12sp"
+                    android:textColor="#888888" />
+
+                <TextView
+                    android:id="@+id/loginLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/log_in"
+                    android:textSize="12sp"
+                    android:textColor="#4ECDC4"
+                    android:textStyle="bold"
+                    android:layout_marginStart="4dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
