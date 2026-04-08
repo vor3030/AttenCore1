@@ -42,4 +42,12 @@
     <!-- Gradient Colors -->
     <color name="gradient_start">#2C5AA0</color>
     <color name="gradient_end">#1a3d6f</color>
+
+    <color name="attencore_bg_dark">#1E293B</color>
+    <color name="attencore_primary_teal">#0F766E</color>
+    <color name="attencore_card_dark">#334155</color>
+    <color name="attencore_accent_teal">#2DD4BF</color>
+    <color name="attencore_card_dark_pressed">#475569</color>
+
+
 </resources>

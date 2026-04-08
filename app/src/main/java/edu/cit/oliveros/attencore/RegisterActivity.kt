@@ -38,18 +38,20 @@ class RegisterActivity : AppCompatActivity() {
         // Student button click
         studentButton.setOnClickListener {
             selectedUserType = "STUDENT"
+            studentIdInput.hint = "Student ID"
             studentButton.isSelected = true
             facultyButton.isSelected = false
-            studentButton.setBackgroundColor(ContextCompat.getColor(this, android.R.color.holo_green_light))
+            studentButton.setBackgroundColor(ContextCompat.getColor(this, R.color.primary_light_teal))
             facultyButton.setBackgroundColor(ContextCompat.getColor(this, android.R.color.darker_gray))
         }
 
         // Faculty button click
         facultyButton.setOnClickListener {
             selectedUserType = "FACULTY"
+            studentIdInput.hint = "Faculty ID"
             facultyButton.isSelected = true
             studentButton.isSelected = false
-            facultyButton.setBackgroundColor(ContextCompat.getColor(this, android.R.color.holo_green_light))
+            facultyButton.setBackgroundColor(ContextCompat.getColor(this, R.color.primary_light_teal))
             studentButton.setBackgroundColor(ContextCompat.getColor(this, android.R.color.darker_gray))
         }
 
@@ -114,7 +116,6 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun registerUser(fullName: String, studentId: String, email: String, password: String, userType: String) {
-        // Use password in log to avoid "unused parameter" warning
         Log.d("RegisterActivity", "Registering user: email=$email, fullName=$fullName, userType=$userType, pwdLen=${password.length}")
 
         // Save session (mock registration)
@@ -125,18 +126,22 @@ class RegisterActivity : AppCompatActivity() {
             expiryTimestamp = System.currentTimeMillis() + 3600000
         )
 
-        Toast.makeText(this, getString(R.string.success_saved), Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Registration Successful!", Toast.LENGTH_SHORT).show()
 
-        // Navigate to MainActivity
-        val intent = Intent(this, MainActivity::class.java).apply {
-            putExtra("email", email)
-            putExtra("provider", "email")
-            putExtra("token", "mock_jwt_token")
+        // Route directly to your unified HomeActivity
+        val intent = Intent(this, HomeActivity::class.java).apply {
+            // Pass the necessary data to HomeActivity
             putExtra("fullName", fullName)
+            putExtra("userType", userType) // HomeActivity checks this to set the correct layout
+
+            // Passing these just in case you need them in HomeActivity later
+            putExtra("email", email)
             putExtra("studentId", studentId)
-            putExtra("userType", userType)
+
+            // Clear the back stack so pressing 'Back' doesn't go to the register screen
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
+
         startActivity(intent)
         finish()
     }

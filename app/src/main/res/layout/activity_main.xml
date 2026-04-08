@@ -1,85 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/gradient_background">
+    android:background="#1a2a2f"
+    android:clipChildren="false">
 
-    <!-- Centered Content (Logo, Title, Tagline) -->
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
+        android:id="@+id/centerContent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:gravity="center"
-        android:paddingStart="30dp"
-        android:paddingEnd="31dp">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/getStartedButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.55">
 
-        <!-- App Icon -->
         <ImageView
             android:id="@+id/appIcon"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/atten_core"
             android:layout_marginBottom="20dp"
-            android:contentDescription="@string/app_icon_description" />
+            android:contentDescription="@string/app_icon_description"
+            android:src="@drawable/atten_core" />
 
-        <!-- App Title -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginBottom="8dp"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/appTitle1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
                 android:text="@string/app_title_part1"
                 android:textColor="#FFFFFF"
                 android:textSize="36sp"
-                android:textStyle="bold"
-                android:fontFamily="@font/roboto_bold" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/appTitle2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
                 android:text="@string/app_title_part2"
                 android:textColor="#4ECDC4"
                 android:textSize="36sp"
-                android:textStyle="bold"
-                android:fontFamily="@font/roboto_bold" />
+                android:textStyle="bold" />
         </LinearLayout>
 
-        <!-- Subtitle -->
         <TextView
             android:id="@+id/subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/roboto_regular"
             android:text="@string/app_tagline"
             android:textColor="#B0C4DE"
-            android:textSize="16sp"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/roboto_regular" />
+            android:textSize="16sp" />
 
     </LinearLayout>
 
-    <!-- Get Started Button (Bottom) -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/getStartedButton"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="56dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="31dp"
         android:layout_marginBottom="30dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/roboto_bold"
+        android:stateListAnimator="@null"
         android:text="@string/get_started"
         android:textColor="#1a5f6f"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:background="@drawable/button_background"
-        android:fontFamily="@font/roboto_bold"
-        android:stateListAnimator="@null" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

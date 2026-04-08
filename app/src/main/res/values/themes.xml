@@ -6,4 +6,9 @@
     </style>
 
     <style name="Theme.AttenCore" parent="Base.Theme.AttenCore" />
+
+    <style name="DarkDropdownMenu" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="android:colorBackground">#1e4d5c</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
 </resources>
