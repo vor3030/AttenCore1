@@ -37,6 +37,10 @@ class HomeActivity : AppCompatActivity() {
 
         // 3. NOW we can safely find the Toolbar because the layout has been loaded
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.topAppBar)
+
+        // ADD THIS LINE HERE to set the hamburger icon:
+        toolbar.overflowIcon = androidx.core.content.ContextCompat.getDrawable(this, R.drawable.ic_menu)
+
         setSupportActionBar(toolbar)
         supportActionBar?.title = "" // Keeps the default title from covering your custom text
     }

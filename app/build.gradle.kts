@@ -9,12 +9,12 @@ plugins {
 
 android {
     namespace = "edu.cit.oliveros.attencore"
-    compileSdk = 36
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "edu.cit.oliveros.attencore"
         minSdk = 24
-        targetSdk = 36
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -36,12 +36,20 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
-    kotlinOptions {
-        jvmTarget = "11"
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
+        }
     }
 
     buildFeatures {
         compose = false
+    }
+
+    packaging {
+        resources {
+            excludes += "META-INF/versions/9/OSGI-INF/MANIFEST.MF"
+        }
     }
 }
 
@@ -77,4 +85,12 @@ dependencies {
 
     // ============= SECURITY =============
     implementation(libs.androidx.security.crypto)
+
+    // Paste this at the very bottom of the file
+    configurations.all {
+        resolutionStrategy {
+            force("androidx.credentials:credentials:1.2.2")
+            force("androidx.credentials:credentials-play-services-auth:1.2.2")
+        }
+    }
 }

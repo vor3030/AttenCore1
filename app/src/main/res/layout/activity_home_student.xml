@@ -60,7 +60,6 @@
                     android:layout_height="?attr/actionBarSize"
                     android:background="@android:color/transparent"
                     app:titleTextColor="#FFFFFF"
-                    app:overflowIcon="@drawable/ic_menu"
                     app:popupTheme="@style/DarkDropdownMenu"
                     tools:title="Student Dashboard"
                     tools:menu="@menu/dashboard_menu" />
